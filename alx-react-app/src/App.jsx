@@ -9,7 +9,7 @@ function App() {
     <div>
       <Header />
       < WelcomeMessage/>
-      <UserProfile name="bruce" age="25" bio="Loves hiking and photography" />
+      <UserProfile name="bruce" Age="25" bio="Loves hiking and photography" />
       <MainContent />
       <Footer />
     </div>
