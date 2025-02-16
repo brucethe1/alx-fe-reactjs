@@ -2,7 +2,7 @@ const UserProfile =(props)=>{
   return(
     <>
     <h2>{props.name}</h2>
-    <p>Age:{props.Age}</p>
+    <p>Age:{props.age}</p>
     <p>Bio:{props.bio}</p>
     </>
   );
