@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -33,3 +34,20 @@ function App() {
 }
 
 export default App
+=======
+import React from 'react';
+import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';
+
+function App() {
+  return (
+    <div>
+      <h1>Recipe Sharing App</h1>
+      <AddRecipeForm />
+      <RecipeList />
+    </div>
+  );
+}
+
+export default App;
+>>>>>>> 6d4dcb9 (Added Zustand for state management and recipe components)
