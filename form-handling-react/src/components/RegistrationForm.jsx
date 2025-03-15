@@ -1,58 +1,67 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
+    username: "",
+    email: "",
+    password: "",
   });
 
+  const [error, setError] = useState("");
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., call API)
-    console.log(formData);
+    
+    if (!formData.username || !formData.email || !formData.password) {
+      setError("All fields are required.");
+      return;
+    }
+
+    console.log("User Registered:", formData);
+    setError("");
+    alert("Registration successful!");
+    
+    // Reset form
+    setFormData({ username: "", email: "", password: "" });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Username:
+      <div>
+        <label>Username:</label>
         <input
           type="text"
           name="username"
-          value={username} // Controlled value
+          value={username}
           onChange={handleChange}
+          required
         />
-      </label>
-      <br />
-      <label>
-        Email:
+      </div>
+      <div>
+        <label>Email:</label>
         <input
           type="email"
           name="email"
-          value={email} // Controlled value
+          value={email}
           onChange={handleChange}
+          required
         />
-      </label>
-      <br />
-      <label>
-        Password:
+      </div>
+      <div>
+        <label>Password:</label>
         <input
           type="password"
           name="password"
-          value={password} // Controlled value
+          value={password}
           onChange={handleChange}
+          required
         />
-      </label>
-      <br />
+      </div>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <button type="submit">Register</button>
     </form>
   );
