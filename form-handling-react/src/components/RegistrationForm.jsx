@@ -4,35 +4,55 @@ const RegistrationForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Check if all fields are filled out
+    // Reset errors before validation
+    setErrors({
+      username: "",
+      email: "",
+      password: "",
+    });
+
+    // Check for missing fields
+    let hasError = false;
     if (!username) {
-      setError("Username is required.");
-      return;
+      setErrors((prevErrors) => ({ ...prevErrors, username: "Username is required." }));
+      hasError = true;
     }
     if (!email) {
-      setError("Email is required.");
-      return;
+      setErrors((prevErrors) => ({ ...prevErrors, email: "Email is required." }));
+      hasError = true;
     }
     if (!password) {
-      setError("Password is required.");
-      return;
+      setErrors((prevErrors) => ({ ...prevErrors, password: "Password is required." }));
+      hasError = true;
     }
 
-    // Further validation (for example, email format)
+    // Further email validation (format check)
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailPattern.test(email)) {
-      setError("Please enter a valid email address.");
+    if (email && !emailPattern.test(email)) {
+      setErrors((prevErrors) => ({ ...prevErrors, email: "Please enter a valid email address." }));
+      hasError = true;
+    }
+
+    if (hasError) {
       return;
     }
 
-    // If all validations pass
+    // If no errors, proceed with registration
     console.log("User Registered:", { username, email, password });
-    setError(""); // Reset error state
+    setErrors({
+      username: "",
+      email: "",
+      password: "",
+    });
     alert("Registration successful!");
 
     // Reset form fields
@@ -52,6 +72,7 @@ const RegistrationForm = () => {
           onChange={(e) => setUsername(e.target.value)}
           required
         />
+        {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
       </div>
       <div>
         <label>Email:</label>
@@ -62,6 +83,7 @@ const RegistrationForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
+        {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
       </div>
       <div>
         <label>Password:</label>
@@ -72,8 +94,8 @@ const RegistrationForm = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
       </div>
-      {error && <p style={{ color: "red" }}>{error}</p>}
       <button type="submit">Register</button>
     </form>
   );
