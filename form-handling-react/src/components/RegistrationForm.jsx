@@ -9,16 +9,33 @@ const RegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!username || !email || !password) {
-      setError("All fields are required.");
+    // Check if all fields are filled out
+    if (!username) {
+      setError("Username is required.");
+      return;
+    }
+    if (!email) {
+      setError("Email is required.");
+      return;
+    }
+    if (!password) {
+      setError("Password is required.");
       return;
     }
 
+    // Further validation (for example, email format)
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    // If all validations pass
     console.log("User Registered:", { username, email, password });
-    setError("");
+    setError(""); // Reset error state
     alert("Registration successful!");
 
-    // Reset form
+    // Reset form fields
     setUsername("");
     setEmail("");
     setPassword("");
