@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom'; // Import BrowserRouter
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import BrowserRouter
 import ProtectedRoute from './components/ProtectedRoute';
 import Profile from './pages/Profile';
 import ProfileDetails from './pages/ProfileDetails';
@@ -10,7 +10,7 @@ import BlogPost from './pages/BlogPost';
 
 function App() {
   return (
-    <BrowserRouter>  {/* Wrap your routes with BrowserRouter */}
+    <Router>  {/* Wrap your routes with BrowserRouter */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -21,10 +21,10 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/post/:id" element={<BlogPost />} />
+        <Route path="/blog/:id" element={<BlogPost />} />  {/* Change path to /blog/:id */}
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
