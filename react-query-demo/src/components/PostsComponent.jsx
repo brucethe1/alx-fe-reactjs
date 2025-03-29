@@ -1,10 +1,10 @@
 // src/components/PostsComponent.jsx
 import React from 'react';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query'; // Ensure '@tanstack/react-query' is installed
 import { fetchPosts } from '../utils/fetchPosts'; // Adjust the path if needed
 
 function PostsComponent() {
-  const { data, error, isLoading, isError } = useQuery('posts', fetchPosts);
+  const { data, error, isLoading, isError } = useQuery(['posts'], fetchPosts);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>An error occurred: {error.message}</div>;
