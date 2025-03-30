@@ -1,37 +1,55 @@
-// src/__tests__/TodoList.test.js
-import { render, screen, fireEvent } from '@testing-library/react';
-import TodoList from '../TodoList';
+import React, { useState } from "react";
 
-describe('TodoList', () => {
+const TodoList = () => {
+  const [todos, setTodos] = useState([]);
+  const [input, setInput] = useState("");
 
-  test('renders the TodoList component', () => {
-    render(<TodoList />);
-    expect(screen.getByText('Todo List')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Enter a new todo')).toBeInTheDocument();
-  });
+  const addTodo = () => {
+    if (input.trim()) {
+      setTodos([...todos, { id: Date.now(), text: input, completed: false }]);
+      setInput("");
+    }
+  };
 
-  test('adds a new todo', () => {
-    render(<TodoList />);
-    fireEvent.change(screen.getByPlaceholderText('Enter a new todo'), {
-      target: { value: 'New Todo' }
-    });
-    fireEvent.click(screen.getByText('Add Todo'));
-    expect(screen.getByText('New Todo')).toBeInTheDocument();
-  });
+  const toggleTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
 
-  test('toggles the completion status of a todo', () => {
-    render(<TodoList />);
-    const todo = screen.getByText('Learn React');
-    fireEvent.click(todo);
-    expect(todo).toHaveStyle('text-decoration: line-through');
-    fireEvent.click(todo);
-    expect(todo).toHaveStyle('text-decoration: none');
-  });
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
 
-  test('deletes a todo', () => {
-    render(<TodoList />);
-    const deleteButton = screen.getAllByText('Delete')[0];
-    fireEvent.click(deleteButton);
-    expect(screen.queryByText('Learn React')).toBeNull();
-  });
-});
+  return (
+    <div>
+      <h1>Todo List</h1>
+      <input
+        type="text"
+        placeholder="Enter a new todo"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <button onClick={addTodo}>Add Todo</button>
+      <ul>
+        {todos.map((todo) => (
+          <li
+            key={todo.id}
+            onClick={() => toggleTodo(todo.id)}
+            style={{
+              textDecoration: todo.completed ? "line-through" : "none",
+              cursor: "pointer",
+            }}
+          >
+            {todo.text}
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default TodoList;
