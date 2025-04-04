@@ -1,11 +1,10 @@
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  variants: {
-    extend: {},
-  },
+  content: [
+    "./src/**/*.{html,js,jsx,ts,tsx}", // adjust based on your project structure
+    "./public/index.html"
+  ],
   theme: {
     extend: {},
   },
   plugins: [],
 }
-
