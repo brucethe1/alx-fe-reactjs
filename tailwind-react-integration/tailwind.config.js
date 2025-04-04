@@ -12,5 +12,5 @@ module.exports = {
       // Add any variants you want to extend here
     },
   },
-  plugins: [],
+ purge: [],
 }
