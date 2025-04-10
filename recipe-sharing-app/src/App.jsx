@@ -5,6 +5,10 @@ import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
 import SearchBar from './components/SearchBar';
+import Header from './components/ Header';
+import Footer from './components/Footer';
+import MainContent from './components/MainContent';
+import UserProfile from './components/UserProfile';
 import { useRecipeStore } from './store/recipeStore';
 
 const App = () => {
