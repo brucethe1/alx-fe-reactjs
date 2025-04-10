@@ -15,14 +15,19 @@ const App = () => {
       <h1>Recipe Sharing App</h1>
       {!selectedRecipe && (
         <>
-          <SearchBar />
-          <AddRecipeForm />
-          <RecipeList />
+          <Routes>
+         <Route path="searchbar"   element="{<SearchBar />}"/>
+         <Route path="addrecipe" element="{<AddRecipeForm />}"/>
+         <Route path="list" element ="{<RecipeList />}"/>
         </>
       )}
       {selectedRecipe && <RecipeDetails />}
+
+      </Routes>
     </div>
   );
+
+  
 };
 
 export default App;
