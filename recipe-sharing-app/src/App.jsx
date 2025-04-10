@@ -1,14 +1,25 @@
-import AddRecipeForm from './components/AddRecipeForm';
+// src/App.jsx
+import { Routes, Route } from 'react-router-dom';
 import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';
+import RecipeDetails from './components/RecipeDetails';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="max-w-xl mx-auto mt-10">
-      <h1 className="text-2xl font-bold mb-4">Recipe Sharing App</h1>
-      <AddRecipeForm />
-      <RecipeList />
+    <div>
+      <h1>Recipe Sharing App</h1>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <AddRecipeForm />
+            <RecipeList />
+          </>
+        } />
+        <Route path="/recipes/:id" element={<RecipeDetails />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
