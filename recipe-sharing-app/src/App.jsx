@@ -1,5 +1,5 @@
 // src/App.jsx
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route ,Router} from 'react-router-dom';
 import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails';
@@ -10,6 +10,7 @@ const App = () => {
     <div>
       <h1>Recipe Sharing App</h1>
       <Routes>
+        <Router>
         <Route path="/" element={
           <>
             <AddRecipeForm />
@@ -17,6 +18,7 @@ const App = () => {
           </>
         } />
         <Route path="/recipes/:id" element={<RecipeDetails />} />
+        </Router>
       </Routes>
     </div>
   );
