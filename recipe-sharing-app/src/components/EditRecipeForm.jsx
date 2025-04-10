@@ -6,15 +6,30 @@ const EditRecipeForm = ({ recipe }) => {
   const [description, setDescription] = useState(recipe.description);
   const updateRecipe = useRecipeStore((state) => state.updateRecipe);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    updateRecipe({ id: recipe.id, title, description });
+  const handleSubmit = (event) => {
+    event.preventDefault(); // ✅ Prevent form reload
+    updateRecipe({
+      id: recipe.id,
+      title,
+      description,
+    });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input value={title} onChange={(e) => setTitle(e.target.value)} />
-      <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+      <input
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Title"
+        required
+      />
+      <textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Description"
+        required
+      />
       <button type="submit">Save Changes</button>
     </form>
   );
