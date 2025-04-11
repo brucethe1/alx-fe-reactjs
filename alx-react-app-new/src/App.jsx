@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from './Header';
-import UserProfile from './UserProfile';
-import MainContent from './MainContent';
-import Footer from './Footer';
+import Header from './components/Header';
+import UserProfile from './components/UserProfile';
+import MainContent from './components/MainContent';  // Import MainContent here
+import Footer from './components/Footer';
 
 const App = () => {
   return (
