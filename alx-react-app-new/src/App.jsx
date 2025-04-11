@@ -4,6 +4,8 @@ import UserProfile from './components/UserProfile';
 import MainContent from './components/MainContent';  // Import MainContent here
 import Footer from './components/Footer';
 import Counter from './components/Counter'; 
+import { UserProvider } from './UserContext'; // Import the UserProvider
+import ProfilePage from './ProfilePage';
 
 const App = () => {
   return (
