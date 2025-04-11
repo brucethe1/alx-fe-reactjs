@@ -1,0 +1,53 @@
+/* styles.css */
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: #121212;
+  color: #E6E6E6;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #FF4500;
+  text-align: center;
+  padding: 20px;
+  border-bottom: 2px solid #FF4500;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.profile-card {
+  background-color: #333;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+  margin: 20px 0;
+}
+
+.profile-card h2 {
+  color: #32CD32;
+}
+
+.profile-card p {
+  font-size: 1.1rem;
+}
+
+.main-content {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(255, 0, 0, 0.7);
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #000;
+  color: #FF4500;
+}
