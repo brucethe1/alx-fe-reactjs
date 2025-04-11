@@ -2,9 +2,9 @@ import React from 'react';
 
 const MainContent = () => {
   return (
-    <main style={{ padding: '20px', backgroundColor: '#f4f4f4', borderRadius: '8px' }}>
-      <h2 style={{ textAlign: 'center', color: '#333' }}>Welcome to My City List</h2>
-      <p style={{ fontSize: '18px', color: '#555' }}>Here are my favorite cities that I have visited.</p>
+    <main style={{ padding: '20px', textAlign: 'center' }}>
+      <h2>My Travel Bucket List</h2>
+      <p>I love to visit New York, Paris, and Tokyo.</p>
     </main>
   );
 };
