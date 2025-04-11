@@ -1,8 +1,9 @@
-import React from 'react';
-import { useUserContext } from './UserContext'; // Import the custom hook
+// src/UserDetails.jsx
+import { useContext } from 'react';
+import UserContext from './UserContext';
 
 function UserDetails() {
-  const userData = useUserContext(); // Consume context
+  const userData = useContext(UserContext);
 
   return (
     <div>
