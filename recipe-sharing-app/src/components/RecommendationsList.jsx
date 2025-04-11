@@ -14,7 +14,7 @@ const RecommendationsList = () => {
           </div>
         ))
       ) : (
-        <p>No recommendations available.</p>
+        <p>No recommendations yet.</p>
       )}
     </div>
   );
