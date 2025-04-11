@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useRecipeStore } from './store/recipeStore'; // Assuming store is in 'store/recipeStore.js'
+import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';
 
 const RecipeApp = () => {
   const setRecipes = useRecipeStore((state) => state.setRecipes);
