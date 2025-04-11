@@ -1,5 +1,6 @@
 import React from 'react';
-import  UserContext  from './UserContext'; // Import the UserProvider
+import { useUserContext } from './UserContext';
+
 import ProfilePage from './ProfilePage';
 
 function App() {
