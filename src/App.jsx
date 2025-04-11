@@ -1,18 +1,17 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './ pages/ Home';
-import UserDetail from './ pages/UserDetail';
+// src/App.jsx
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './components/HomePage';
+import RecipeDetail from './components/RecipeDetail';
+import AddRecipeForm from './components/ AddRecipeForm';
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50 py-8 px-4">
-        <div className="max-w-4xl mx-auto">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/user/:username" element={<UserDetail />} />
-          </Routes>
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/recipe/:id" element={<RecipeDetail />} />
+        <Route path='/add' element={<AddRecipeForm/>}/>
+      </Routes>
     </Router>
   );
 }
