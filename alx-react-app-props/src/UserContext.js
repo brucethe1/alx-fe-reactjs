@@ -1,18 +1,19 @@
 import React, { createContext, useContext } from 'react';
 
-// Create Context
+// 1. Create the context
 const UserContext = createContext();
 
-// Create a custom provider component
+// 2. Define the provider component
 export const UserProvider = ({ children }) => {
   const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
 
   return (
+    // 3. Wrap the children in the context provider
     <UserContext.Provider value={userData}>
       {children}
     </UserContext.Provider>
   );
 };
 
-// Export useContext hook for easier consumption
+// 4. Create a custom hook to consume the context
 export const useUserContext = () => useContext(UserContext);
