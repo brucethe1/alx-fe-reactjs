@@ -27,6 +27,7 @@ export default function Search() {
     setError(null);
     setPage(1);
     
+    // Using searchUsers instead of fetchUserData
     const response = await searchUsers(searchParams);
     
     if (response.error) {
@@ -58,7 +59,7 @@ export default function Search() {
 
   return (
     <div className="max-w-4xl mx-auto my-8 p-6 bg-white rounded-lg shadow-md">
-      {/* Advanced Search Form */}
+      {/* Search Form */}
       <form onSubmit={handleSubmit} className="mb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
