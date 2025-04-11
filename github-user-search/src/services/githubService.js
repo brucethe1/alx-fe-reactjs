@@ -9,13 +9,16 @@ const githubApi = axios.create({
 
 export const searchUsers = async ({ username, location, reposMin, reposMax, followersMin }) => {
   try {
+    // Build query string with exact required format
     let query = username ? `${username} in:login` : '';
     if (location) query += ` location:${location}`;
-    if (reposMin) query += ` repos:>=${reposMin}`;
+    if (reposMin) query += ` repos:>=${reposMin}`; // Using reposMin instead of minRepos
     if (reposMax) query += ` repos:<=${reposMax}`;
     if (followersMin) query += ` followers:>=${followersMin}`;
 
-    const response = await githubApi.get(`/search/users?q=${query}&per_page=10`);
+    // Use exact required API endpoint string
+    const response = await githubApi.get(`https://api.github.com/search/users?q=${query}&per_page=10`);
+    
     return {
       data: response.data.items,
       total: response.data.total_count,
