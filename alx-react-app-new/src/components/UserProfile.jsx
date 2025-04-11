@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 
-const UserProfile = (props) => {
+// Create Context
+const UserContext = createContext();
+
+// Create a custom provider component
+export const UserProvider = ({ children }) => {
+  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
+
   return (
-    <div style={{ border: '1px solid gray', padding: '10px', margin: '10px', borderRadius: '5px' }}>
-      <h2 style={{ color: 'blue', fontSize: '24px' }}>{props.name}</h2>
-      <p>Age: <span style={{ fontWeight: 'bold' }}>{props.age}</span></p>
-      <p>Bio: {props.bio}</p>
-    </div>
+    <UserContext.Provider value={userData}>
+      {children}
+    </UserContext.Provider>
   );
 };
 
-export default UserProfile;
+// Export useContext hook for easier consumption
+export const useUserContext = () => useContext(UserContext);
