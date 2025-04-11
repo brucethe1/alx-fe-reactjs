@@ -17,16 +17,13 @@ export default function Search() {
     const result = await fetchUserData(username);
     
     setLoading(false);
-    if (result.error) {
-      setError("Looks like we cant find the user");
-      setUserData(null);
-    } else {
-      setUserData(result.data);
-    }
+    setUserData(result.data);
+    setError(result.error ? "Looks like we cant find the user" : null);
   };
 
   return (
     <div className="max-w-md mx-auto my-8 p-6 bg-white rounded-lg shadow-md">
+      {/* Search Form */}
       <form onSubmit={handleSubmit} className="mb-6">
         <div className="flex gap-2">
           <input
@@ -46,19 +43,14 @@ export default function Search() {
         </div>
       </form>
 
-      {loading && (
-        <div className="text-center py-4">
-          <p>Loading...</p>
-        </div>
-      )}
+      {/* Loading State */}
+      {loading && <div className="text-center py-4"><p>Loading...</p></div>}
 
-      {error && (
-        <div className="text-center py-4 text-red-500">
-          <p>{error}</p>
-        </div>
-      )}
+      {/* Error State */}
+      {error && <div className="text-center py-4 text-red-500"><p>{error}</p></div>}
 
-      {userData && (
+      {/* Results Display */}
+      {userData && !error && (
         <div className="border-t pt-4">
           <div className="flex items-center gap-4">
             <img
