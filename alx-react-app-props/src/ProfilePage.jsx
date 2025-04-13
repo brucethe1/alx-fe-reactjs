@@ -1,4 +1,4 @@
-// ProfilePage.jsx
+// alx-react-app-props/ProfilePage.jsx
 import UserInfo from './UserInfo';
 
 function ProfilePage() {
