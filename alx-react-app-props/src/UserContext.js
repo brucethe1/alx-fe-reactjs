@@ -6,7 +6,7 @@ const UserContext = createContext();
 // Create a UserProvider component
 export const UserProvider = ({ children, value }) => {
   return (
-    <UserContext.Provider value={value}>
+  <UserContext.Provider value={value}>
       {children}
     </UserContext.Provider>
   );
