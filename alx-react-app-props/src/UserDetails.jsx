@@ -1,4 +1,4 @@
-// UserDetails.jsx
+// alx-react-app-props/UserDetails.jsx
 import { useContext } from 'react';
 import UserContext from './UserContext';
 
