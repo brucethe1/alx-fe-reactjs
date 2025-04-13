@@ -1,4 +1,4 @@
-// alx-react-app-props/App.jsx
+// src/App.jsx
 import ProfilePage from './ProfilePage';
 import UserContext from './UserContext';
 
