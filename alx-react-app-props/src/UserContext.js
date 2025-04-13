@@ -1,20 +1,16 @@
-import React, { createContext, useContext } from 'react';
+import React from 'react';
+import { useUser } from './UserContext';
 
-// Create a UserContext
-const UserContext = createContext();
+function UserProfile() {
+  const user = useUser();
 
-// Create a UserProvider component
-export const UserProvider = ({ children, value }) => {
   return (
-  <UserContext.Provider value={value}>
-      {children}
-    </UserContext.Provider>
+    <div>
+      <h2>User Profile</h2>
+      <p>Name: {user.name}</p>
+      <p>Email: {user.email}</p>
+    </div>
   );
-};
+}
 
-// Custom hook to use the UserContext
-export const useUser = () => {
-  return useContext(UserContext);
-};
-
-export default UserContext;
+export default UserProfile;
