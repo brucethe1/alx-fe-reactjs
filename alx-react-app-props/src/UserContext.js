@@ -3,6 +3,6 @@
 import { createContext } from 'react';
 
 // Create and export the context
-UserContext.displayName = "UserContext";
+const userData = useContext(UserContext);
 
 export default UserContext;
